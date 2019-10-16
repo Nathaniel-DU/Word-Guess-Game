@@ -1,0 +1,14 @@
+body {
+    color: rgb(250, 244, 244);
+    
+    
+}
+.container {
+    margin: auto;
+    text-align: center;
+    background: url(../images/tv-shows.jpg);
+    height: 600px;
+}
+#currentWord {
+    letter-spacing: 25px;
+}
