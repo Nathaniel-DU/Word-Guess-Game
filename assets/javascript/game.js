@@ -17,3 +17,10 @@ var word = possibleWords[Math.floor(Math.random() * possibleWords.length)];
 var newWord = word;
 var letterLefttoFind = word.length;
 
+
+gameStart()
+
+document.onkeypress = function(event) {
+    var playerGuess = event
+}
+   
