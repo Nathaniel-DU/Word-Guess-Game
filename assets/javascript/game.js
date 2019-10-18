@@ -1,26 +1,70 @@
 //word array 
-var posibleWords = ["breaking bad","x-files","the office","parks and rec","friends","bones","new girl","game of thrones","walking dead","monk","burn notice","orange is the new black","peaky blinders"]
-
-//tracking vars
-var wins = 0;
-var losses = 0;
-var remainingGuesses = 15;
+var possibleWords = ["breaking bad", "x-files", "the office", "parks and rec", "friends", "bones", "new girl", "game of thrones", "walking dead", "monk", "burn notice", "orange is the new black", "peaky blinders"]
+//definitions
+var newWord, displayWord, correctGuess, incorrectGuess, wins, losses, remainingGuesses;
 
 //html display
-var totalWins = document.getElementById("total-wins");
-var currentWord = document.getElementById("current-word");
-var remainingGuesses = document.getElementById("remaining-guesses");
-var guessedLetters = document.getElementById("guessed-letters");
-
-//word math
-var word = possibleWords[Math.floor(Math.random() * possibleWords.length)];
-var newWord = word;
-var letterLefttoFind = word.length;
+var totalWins = document.getElementById("totalWins");
+var currentWord = document.getElementById("currentWord");
+var remainingGuesses = document.getElementById("remainingGuesses");
+var guessedLetters = document.getElementById("guessedLetters");
 
 
 gameStart()
 
-document.onkeypress = function(event) {
-    var playerGuess = event
+document.onkeypress = onKeyFunc;
+
+function onKeyFunc(event) {
+    var letter = event.key;
+    if(newWord.includes(letter)){
+        console.log(letter)
+        if(!correctGuess.includes(letter)){
+            correctGuess.push(letter);
+            ReplaceLetters(displayWord, newWord, letter);
+        } else {
+            console.log("Already Guessed")
+        }
+    }
 }
-   
+function ReplaceLetters(dispString, array, letter){
+    let newArr = dispString.split(" ");
+    console.log(newArr, array, newArr.length, array.length)
+    for(var i = 0; i < array.length; i++){
+        if(array[i] === letter){
+            console.log("Here!")
+            newArr[i] = letter;
+        }
+    }
+    displayWord = newArr.join(" ");
+    currentWord.innerHTML = displayWord;
+}
+
+function gameStart() {
+    //tracking vars
+    wins = 0;
+    losses = 0;
+    remainingGuesses = 15;
+    //word math
+    newWord = GetRandomIndex(possibleWords);
+    correctGuess = [];
+    incorrectGuess = [];
+
+    displayWord = InitDisplayWord(newWord)
+    currentWord.innerHTML = displayWord;
+    console.log(newWord)
+}
+
+function GetRandomIndex(array) {
+    return array[Math.floor(Math.random() * array.length)]
+}
+function InitDisplayWord(word) {
+    let displayArr = [];
+    for (var i = 0; i < word.length; i++) {
+        if (word[i] === " ") {
+            displayArr.push("&nbsp;")
+        } else {
+            displayArr.push("_")
+        }
+    }
+    return displayArr.join(" ")
+}

@@ -9,6 +9,6 @@ body {
     background: url(../images/tv-shows.jpg);
     height: 550px;
 }
-#currentWord {
-    letter-spacing: 25px;
-}
+pre {
+    color: rgb(250, 244, 244);
+} 
