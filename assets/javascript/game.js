@@ -6,8 +6,8 @@ var newWord, displayWord, correctGuess, incorrectGuess, wins, losses, remainingG
 //html display
 var totalWins = document.getElementById("totalWins");
 var currentWord = document.getElementById("currentWord");
-var remainingGuesses = document.getElementById("remainingGuesses");
-var guessedLetters = document.getElementById("guessedLetters");
+var remainingGuessesText = document.getElementById("remainingGuesses");
+
 
 
 gameStart()
@@ -23,6 +23,15 @@ function onKeyFunc(event) {
             ReplaceLetters(displayWord, newWord, letter);
         } else {
             console.log("Already Guessed")
+        }
+    }
+    else {
+        remainingGuesses--;
+        remainingGuessesText.textContent = remainingGuesses;
+
+        if (remainingGuesses === 0) {
+            alert ("THE GAME IS OVER AND YOU LOSE");
+            gameStart();
         }
     }
 }
@@ -68,3 +77,5 @@ function InitDisplayWord(word) {
     }
     return displayArr.join(" ")
 }
+
+ 
