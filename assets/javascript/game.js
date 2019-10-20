@@ -32,8 +32,16 @@ function onKeyFunc(event) {
         if (remainingGuesses === 0) {
             alert ("THE GAME IS OVER AND YOU LOSE");
             gameStart();
+
+
+    
+
+            
         }
+
+        
     }
+    
 }
 function ReplaceLetters(dispString, array, letter){
     let newArr = dispString.split(" ");

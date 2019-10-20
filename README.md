@@ -1,20 +1,41 @@
 # Word-Guess-Game
 Word Guess Game
 About
-This is my word guess game, 
+This is my word guess game, its not as good as I wanted, but I did my best and put in around 25 hours of struggle, so Im proud of it. 
 
 Demo
-You should put the link to your application here. Example- Demo Site: This link will take you to google
+link to my application. https://nathaniel-du.github.io/Word-Guess-Game/
 
 Requirements
-Here you will list the dependencies of the application. We dont have any yet so it is not needed. Example -
+Here are the vital functions:
 
-Node
-NPM
-MongoDB
-Build Tools
-This is where you will list any technologies used like jQuery, or Bootstrap. Example -
+document.onkeypress = onKeyFunc;
+
+function onKeyFunc(event) {
+    var letter = event.key;
+    if(newWord.includes(letter)){
+        console.log(letter)
+        if(!correctGuess.includes(letter)){
+            correctGuess.push(letter);
+            ReplaceLetters(displayWord, newWord, letter);
+        } else {
+
+this is the key press function, it lets the user know if they guessed right or wrong and tracks keystroke.
+
+
+else {
+        remainingGuesses--;
+        remainingGuessesText.textContent = remainingGuesses;
+
+        if (remainingGuesses === 0) {
+            alert ("THE GAME IS OVER AND YOU LOSE");
+            gameStart();
+
+
+This statement will alert the user to a loss and restart the game.            
+
+technologies used:
 
 Bootstrap
 jQuery
-React
+CSS
